@@ -1,0 +1,70 @@
+/* 0) CSS Reset (мягкий) */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; line-height: 1.6; }
+img, video { max-width: 100%; height: auto; display: block; }
+button, input, select, textarea { font: inherit; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+
+/* 1) Цветовая схема через переменные */
+:root{
+--bg: #0b0c0f;
+--elev: #12141a;
+--text: #e8ebf0;
+--muted: #a9b1bd;
+--card: #12141a;
+--border: #262a33;
+--accent: #6ee7b7; /* мята */
+--accent-2: #60a5fa; /* лазурь */
+--danger: #ef4444;
+--warn: #f59e0b;
+--ok: #22c55e;
+--focus: #60a5fa;
+--shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+
+/***** Светлая тема по системным настройкам *****/
+@media (prefers-color-scheme: light){
+:root{
+--bg: #f8fafc;
+--elev: #ffffff;
+--text: #0f172a;
+--muted: #475569;
+--card: #ffffff;
+--border: #e5e7eb;
+--shadow: 0 8px 24px rgba(15,23,42,.06);
+}
+}
+
+
+/* Принудительное переопределение через data-theme */
+:root[data-theme="dark"]{
+--bg:#0b0c0f; --elev:#12141a; --text:#e8ebf0; --muted:#a9b1bd; --card:#12141a; --border:#262a33; --shadow:0 10px 30px rgba(0,0,0,.25);
+}
+:root[data-theme="light"]{
+--bg:#f8fafc; --elev:#ffffff; --text:#0f172a; --muted:#475569; --card:#ffffff; --border:#e5e7eb; --shadow:0 8px 24px rgba(15,23,42,.06);
+}
+
+
+/* 2) Базовая типографика и контейнер */
+body{ background: radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.12), transparent 60%), radial-gradient(900px 500px at 90% -15%, rgba(110,231,183,.12), transparent 60%), var(--bg); color: var(--text); }
+.container{ width:min(1050px, 92vw); margin-inline:auto; padding: clamp(16px, 2vw, 24px); }
+.lead{ color: var(--muted); font-size: clamp(1rem, .9rem + .5vw, 1.125rem); }
+
+
+h1{ font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.6rem); line-height:1.15; letter-spacing:-.02em; margin: 0 0 .5rem; }
+h2{ font-size: clamp(1.4rem, 1.1rem + 1vw, 1.8rem); letter-spacing:-.01em; margin: 2rem 0 .75rem; }
+h3{ font-size: clamp(1.15rem, 1rem + .6vw, 1.3rem); margin: 1.25rem 0 .5rem; }
+
+
+/* 3) Шапка — стеклянная */
+.header{ position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(10px); background: color-mix(in oklab, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); }
+.header .container{ display:flex; align-items:center; gap:16px; padding-block: 12px; }
+.brand{ font-weight: 700; letter-spacing:.02em; }
+.nav{ display:flex; flex-wrap: wrap; gap:8px; margin-left:auto; align-items:center; }
+.nav a{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; text-decoration:none; color: var(--text); border:1px solid transparent; transition: .2s ease; }
+.nav a[aria-current="page"], .nav a:hover{ border-color: var(--border); background: color-mix(in oklab, var(--card) 90%, transparent); }
+@keyframes shimmer{ from{ transform: translateX(-100%);} to{ transform: translateX(100%);} }
