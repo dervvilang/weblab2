@@ -1,58 +1,75 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>WebLab2 — демо (Vite MPA)</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebLab — Главная</title>
+  <link rel="stylesheet" href="modern.css" />
+</head>
+<body>
 
-    <!-- Подключаем скин из public/ (важно: относительный путь ./ ) -->
-    <link rel="stylesheet" href="./modern.css">
-    <script defer src="./theme.js"></script>
-  </head>
-  <body>
-    <!-- Шапка с современным стилем -->
-    <header class="header">
-      <div class="container">
-        <div class="brand">🔧 WebLab2</div>
-        <nav class="nav">
-          <a href="./index.html" aria-current="page">Главная</a>
-          <a href="./books.html">Поиск книг</a>
-          <a href="./currency.html">Конвертер валют</a>
-          <a href="./weather.html">Погода</a>
-        </nav>
-        <button class="btn ghost" id="themeToggle" aria-label="Сменить тему">🌓</button>
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="logo"></span>
+        <span>WebLab</span>
+      </a>
+
+      <button id="burger" class="burger" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <div id="menu" class="menu">
+        <a class="active" href="index.html">Главная</a>
+        <a href="books.html">Книги</a>
+        <a href="currency.html">Курсы валют</a>
+        <a href="weather.html">Погода</a>
+        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
+          <span>Тема</span>
+        </button>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
 
-    <!-- Hero-блок с сеткой и типографикой из modern.css -->
-    <main>
-      <section class="hero container">
-        <div>
-          <h1>Мультистраничное приложение на Vite</h1>
-          <p class="lead">Демонстрация <code>fetch</code> к публичным API.</p>
-          <ul class="features">
-            <li>📚 Open Library — поиск книг</li>
-            <li>💱 Frankfurter — курсы и конвертация валют</li>
-            <li>🌦️ Open-Meteo — геокодинг города и прогноз погоды</li>
-          </ul>
-          <div class="mt-2">
-            <a class="btn primary" href="./books.html">Открыть поиск книг</a>
-            <a class="btn" href="./currency.html">Конвертер валют</a>
-          </div>
-        </div>
-        <!-- Можно поставить любую картинку-превью проекта -->
-        <img src="poster.jpg" alt="Превью WebLab2" loading="lazy" referrerpolicy="no-referrer">
-      </section>
+<main class="container">
+  <section class="hero stack-m">
+    <h1>Учебный сайт WebLab</h1>
+    <p class="lead">Демо с разделами: книги, курсы валют и погода — с адаптивным дизайном и тёмной темой.</p>
+    <div class="stack-s">
+      <a class="btn" href="books.html">К книгам</a>
+      <a class="btn ghost" href="currency.html">К валютам</a>
+    </div>
+  </section>
 
-      <section class="container section">
-        <div class="card">
-          <h2>Что внутри</h2>
-          <p class="lead">Быстрый старт с современным UI-скином без фреймворков.</p>
-        </div>
-      </section>
-    </main>
+  <section class="grid">
+    <div class="card col-6 stack-m">
+      <h3>Быстрые действия</h3>
+      <div class="stack-s">
+        <a class="btn" href="weather.html">Посмотреть погоду</a>
+        <a class="btn" href="currency.html">Текущие курсы</a>
+      </div>
+    </div>
 
-    <!-- Твой исходный Vite-скрипт оставляем как есть -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <div class="card col-6 stack-m">
+      <h3>О проекте</h3>
+      <p class="lead">Статические страницы + минимальный JS. Сетка на CSS Grid, аккуратная типографика, карточки, шапка и футер.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container inner">
+    <small>© 2025 WebLab</small>
+    <div class="stack-s">
+      <small>Сделано для учебной лабораторной</small>
+    </div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
 </html>
