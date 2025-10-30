@@ -1,43 +1,81 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Поиск книг — WebLab2</title>
-  </head>
-  <body>
-    <header class="container">
-      <h1>📖 Поиск книг</h1>
-      <nav class="nav">
-        <a href="./index.html">Главная</a>
-        <a href="./books.html" aria-current="page">Поиск книг</a>
-        <a href="./currency.html">Конвертер валют</a>
-        <a href="./weather.html">Погода</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebLab — Книги</title>
+  <link rel="stylesheet" href="modern.css" />
+</head>
+<body>
 
-    <main class="container">
-      <form id="book-form" class="card">
-        <label>
-          Название/автор/слово:
-          <input id="book-query" type="text" required placeholder="harry potter / tolstoy / machine learning"/>
-        </label>
-        <button type="submit">Искать</button>
-        <p class="hint">Источник: Open Library Search API</p>
-      </form>
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="logo"></span>
+        <span>WebLab</span>
+      </a>
 
-      <section id="book-results" class="grid"></section>
+      <button id="burger" class="burger" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
 
-      <template id="book-item">
-        <article class="card">
-          <img class="cover" alt="Обложка"/>
-          <h3 class="title"></h3>
-          <p class="meta"></p>
-          <a class="link" target="_blank" rel="noopener">Подробнее</a>
-        </article>
-      </template>
-    </main>
+      <div id="menu" class="menu">
+        <a href="index.html">Главная</a>
+        <a class="active" href="books.html">Книги</a>
+        <a href="currency.html">Курсы валют</a>
+        <a href="weather.html">Погода</a>
+        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
+          <span>Тема</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
 
-    <script type="module" src="/src/books.js"></script>
-  </body>
+<main class="container">
+  <section class="hero stack-m">
+    <h1>Каталог книг</h1>
+    <p class="lead">Подборка учебных и художественных изданий. Замените заглушки своими данными/карточками.</p>
+  </section>
+
+  <section class="grid">
+    <!-- Карточка книги -->
+    <article class="card col-4 stack-m">
+      <div class="badge">Новинка</div>
+      <h3>Clean Code</h3>
+      <p class="lead">Robert C. Martin · 2008</p>
+      <p>Принципы написания понятного, поддерживаемого кода.</p>
+      <a class="btn ghost" href="#" aria-label="Подробнее о Clean Code">Подробнее</a>
+    </article>
+
+    <article class="card col-4 stack-m">
+      <h3>You Don’t Know JS</h3>
+      <p class="lead">Kyle Simpson · 2015</p>
+      <p>Глубокое погружение в особенности JavaScript.</p>
+      <a class="btn ghost" href="#" aria-label="Подробнее о YDKJS">Подробнее</a>
+    </article>
+
+    <article class="card col-4 stack-m">
+      <h3>Designing Data-Intensive Applications</h3>
+      <p class="lead">Martin Kleppmann · 2017</p>
+      <p>Архитектура надёжных, масштабируемых систем обработки данных.</p>
+      <a class="btn ghost" href="#" aria-label="Подробнее о DDIA">Подробнее</a>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container inner">
+    <small>© 2025 WebLab</small>
+    <div class="stack-s">
+      <small>Сделано для учебной лабораторной</small>
+    </div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
 </html>
