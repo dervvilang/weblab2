@@ -7,75 +7,50 @@
   <link rel="stylesheet" href="modern.css" />
 </head>
 <body>
-
 <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="logo"></span>
-        <span>WebLab</span>
-      </a>
-
-      <button id="burger" class="burger" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-
-      <div id="menu" class="menu">
-        <a href="index.html">Главная</a>
-        <a class="active" href="books.html">Книги</a>
-        <a href="currency.html">Курсы валют</a>
-        <a href="weather.html">Погода</a>
-        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
-          <span>Тема</span>
-        </button>
-      </div>
-    </nav>
-  </div>
+  <nav class="nav container">
+    <a class="brand" href="index.html"><span class="logo"></span><span>WebLab</span></a>
+    <div class="menu">
+      <a class="active" href="books.html">Книги</a>
+      <a href="currency.html">Курсы валют</a>
+      <a href="weather.html">Погода</a>
+      <button id="theme-toggle" class="theme-toggle" title="Сменить тему">Тема</button>
+    </div>
+  </nav>
 </header>
 
 <main class="container">
   <section class="hero stack-m">
-    <h1>Каталог книг</h1>
-    <p class="lead">Подборка учебных и художественных изданий. Замените заглушки своими данными/карточками.</p>
+    <h1>Поиск книг</h1>
+    <p class="lead">Введите запрос и получите список книг из публичного API.</p>
+    <!-- сохраняем ожидаемые id, чтобы существующий books.js продолжил работать -->
+    <form id="bookSearchForm" class="grid" autocomplete="off">
+      <div class="col-8">
+        <label class="stack-s">
+          <span>Запрос</span>
+          <input id="q" name="q" type="text" placeholder="например, Clean Code" required />
+        </label>
+      </div>
+      <div class="col-4">
+        <label class="stack-s">
+          <span>&nbsp;</span>
+          <button class="btn" type="submit">Найти</button>
+        </label>
+      </div>
+    </form>
   </section>
 
-  <section class="grid">
-    <!-- Карточка книги -->
-    <article class="card col-4 stack-m">
-      <div class="badge">Новинка</div>
-      <h3>Clean Code</h3>
-      <p class="lead">Robert C. Martin · 2008</p>
-      <p>Принципы написания понятного, поддерживаемого кода.</p>
-      <a class="btn ghost" href="#" aria-label="Подробнее о Clean Code">Подробнее</a>
-    </article>
-
-    <article class="card col-4 stack-m">
-      <h3>You Don’t Know JS</h3>
-      <p class="lead">Kyle Simpson · 2015</p>
-      <p>Глубокое погружение в особенности JavaScript.</p>
-      <a class="btn ghost" href="#" aria-label="Подробнее о YDKJS">Подробнее</a>
-    </article>
-
-    <article class="card col-4 stack-m">
-      <h3>Designing Data-Intensive Applications</h3>
-      <p class="lead">Martin Kleppmann · 2017</p>
-      <p>Архитектура надёжных, масштабируемых систем обработки данных.</p>
-      <a class="btn ghost" href="#" aria-label="Подробнее о DDIA">Подробнее</a>
-    </article>
-  </section>
+  <section id="booksList" class="grid" aria-live="polite"></section>
 </main>
 
 <footer class="footer">
   <div class="container inner">
     <small>© 2025 WebLab</small>
-    <div class="stack-s">
-      <small>Сделано для учебной лабораторной</small>
-    </div>
+    <small class="muted">Источник данных — публичное API</small>
   </div>
 </footer>
 
-<script src="theme.js"></script>
+<script type="module" src="theme.js"></script>
+<script type="module" src="books.js"></script>
 </body>
 </html>

@@ -7,56 +7,26 @@
   <link rel="stylesheet" href="modern.css" />
 </head>
 <body>
-
 <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="logo"></span>
-        <span>WebLab</span>
-      </a>
-
-      <button id="burger" class="burger" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-
-      <div id="menu" class="menu">
-        <a class="active" href="index.html">Главная</a>
-        <a href="books.html">Книги</a>
-        <a href="currency.html">Курсы валют</a>
-        <a href="weather.html">Погода</a>
-        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
-          <span>Тема</span>
-        </button>
-      </div>
-    </nav>
-  </div>
+  <nav class="nav container">
+    <a class="brand" href="index.html"><span class="logo"></span><span>WebLab</span></a>
+    <div class="menu">
+      <a href="books.html">Книги</a>
+      <a href="currency.html">Курсы валют</a>
+      <a href="weather.html">Погода</a>
+      <button id="theme-toggle" class="theme-toggle" title="Сменить тему">Тема</button>
+    </div>
+  </nav>
 </header>
 
 <main class="container">
   <section class="hero stack-m">
-    <h1>Учебный сайт WebLab</h1>
-    <p class="lead">Демо с разделами: книги, курсы валют и погода — с адаптивным дизайном и тёмной темой.</p>
+    <h1>Мультистраничное приложение на Vite</h1>
+    <p class="lead">Три примера работы с публичными API: поиск книг, курсы валют и погода.</p>
     <div class="stack-s">
-      <a class="btn" href="books.html">К книгам</a>
-      <a class="btn ghost" href="currency.html">К валютам</a>
-    </div>
-  </section>
-
-  <section class="grid">
-    <div class="card col-6 stack-m">
-      <h3>Быстрые действия</h3>
-      <div class="stack-s">
-        <a class="btn" href="weather.html">Посмотреть погоду</a>
-        <a class="btn" href="currency.html">Текущие курсы</a>
-      </div>
-    </div>
-
-    <div class="card col-6 stack-m">
-      <h3>О проекте</h3>
-      <p class="lead">Статические страницы + минимальный JS. Сетка на CSS Grid, аккуратная типографика, карточки, шапка и футер.</p>
+      <a class="btn" href="books.html">Искать книги</a>
+      <a class="btn ghost" href="currency.html">Курсы валют</a>
+      <a class="btn ghost" href="weather.html">Погода</a>
     </div>
   </section>
 </main>
@@ -64,12 +34,10 @@
 <footer class="footer">
   <div class="container inner">
     <small>© 2025 WebLab</small>
-    <div class="stack-s">
-      <small>Сделано для учебной лабораторной</small>
-    </div>
+    <small class="muted">Учебный проект</small>
   </div>
 </footer>
 
-<script src="theme.js"></script>
+<script type="module" src="theme.js"></script>
 </body>
 </html>
