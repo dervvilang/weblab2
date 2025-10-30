@@ -1,111 +1,33 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WebLab — Курсы валют</title>
-  <link rel="stylesheet" href="modern.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Конвертер валют — WebLab2</title>
+  </head>
+  <body>
+    <header class="container">
+      <h1>💱 Конвертер валют</h1>
+      <nav class="nav">
+        <a href="./index.html">Главная</a>
+        <a href="./books.html">Поиск книг</a>
+        <a href="./currency.html" aria-current="page">Конвертер валют</a>
+        <a href="./weather.html">Погода</a>
+      </nav>
+    </header>
 
-<header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="logo"></span>
-        <span>WebLab</span>
-      </a>
+    <main class="container">
+      <form id="fx-form" class="card">
+        <label>Сумма: <input id="amount" type="number" min="0" step="0.01" value="100"/></label>
+        <label>Из: <select id="from"></select></label>
+        <label>В: <select id="to"></select></label>
+        <button type="submit">Конвертировать</button>
+        <p class="hint">Источник: Frankfurter API</p>
+      </form>
 
-      <button id="burger" class="burger" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
+      <section id="fx-result" class="card"></section>
+    </main>
 
-      <div id="menu" class="menu">
-        <a href="index.html">Главная</a>
-        <a href="books.html">Книги</a>
-        <a class="active" href="currency.html">Курсы валют</a>
-        <a href="weather.html">Погода</a>
-        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
-          <span>Тема</span>
-        </button>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-  <section class="hero stack-m">
-    <h1>Курсы валют</h1>
-    <p class="lead">Базовая таблица курсов. Подключи свой источник данных/скрипт, если требуется автообновление.</p>
-    <form class="grid" onsubmit="return false;">
-      <div class="col-6">
-        <label class="stack-s">
-          <span>Базовая валюта</span>
-          <select id="baseCurrency">
-            <option value="USD">USD — Доллар США</option>
-            <option value="EUR">EUR — Евро</option>
-            <option value="RUB">RUB — Рубль</option>
-          </select>
-        </label>
-      </div>
-      <div class="col-6">
-        <label class="stack-s">
-          <span>Дата (опционально)</span>
-          <input type="date" id="rateDate" />
-        </label>
-      </div>
-      <div class="col-12">
-        <button class="btn" id="loadRates">Показать курсы</button>
-      </div>
-    </form>
-  </section>
-
-  <section class="card stack-m">
-    <h3>Таблица курсов</h3>
-    <div class="stack-s">
-      <table class="table" aria-label="Таблица курсов валют">
-        <thead>
-          <tr>
-            <th>Валюта</th>
-            <th>Курс</th>
-            <th>Изм.</th>
-          </tr>
-        </thead>
-        <tbody id="ratesBody">
-          <!-- Заглушки: замени/обновляй данными из API -->
-          <tr>
-            <td>EUR</td>
-            <td>0.92</td>
-            <td><span class="badge">+0.12%</span></td>
-          </tr>
-          <tr>
-            <td>RUB</td>
-            <td>98.50</td>
-            <td><span class="badge">-0.08%</span></td>
-          </tr>
-          <tr>
-            <td>GBP</td>
-            <td>0.78</td>
-            <td><span class="badge">+0.03%</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <small class="muted">*Данные демонстрационные.</small>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container inner">
-    <small>© 2025 WebLab</small>
-    <div class="stack-s">
-      <small>Сделано для учебной лабораторной</small>
-    </div>
-  </div>
-</footer>
-
-<script src="theme.js"></script>
-</body>
+    <script type="module" src="/src/currency.js"></script>
+  </body>
 </html>
