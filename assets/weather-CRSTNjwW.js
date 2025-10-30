@@ -1,4 +1,52 @@
-import"./style-BZ5FMwGp.js";const v=document.getElementById("wx-form"),t=document.getElementById("wx-result"),$=document.getElementById("wx-card");v.addEventListener("submit",async i=>{i.preventDefault();const n=document.getElementById("city").value.trim();if(n){t.innerHTML=`<div class="card">Ищу координаты для: <b>${n}</b>…</div>`;try{const o=`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(n)}&count=1&language=ru&format=json`,c=await fetch(o);if(!c.ok)throw new Error("Ошибка геокодинга");const r=await c.json();if(!r.results||r.results.length===0){t.innerHTML='<div class="card">Город не найден.</div>';return}const d=r.results[0],{latitude:m,longitude:l,name:u,country:w}=d,g=`https://api.open-meteo.com/v1/forecast?latitude=${m}&longitude=${l}&current_weather=true&hourly=temperature_2m&forecast_days=1&timezone=auto`,a=await fetch(g);if(!a.ok)throw new Error("Ошибка прогноза");const p=await a.json();t.innerHTML="";const s=$.content.cloneNode(!0);s.querySelector(".title").textContent=`${u}, ${w}`;const e=p.current_weather,h=(e==null?void 0:e.temperature)??"—",y=(e==null?void 0:e.windspeed)??"—",f=(e==null?void 0:e.time)??"";s.querySelector(".meta").innerHTML=`
-      Сейчас: <b>${h} °C</b>, ветер ${y} км/ч<br/>
-      Обновлено: ${f}
-    `,t.appendChild(s)}catch(o){t.innerHTML=`<div class="card">Ошибка: ${o.message}</div>`}}});
+import "./style-BZ5FMwGp.js";
+
+const form = document.getElementById("wx-form");
+const results = document.getElementById("wx-result");
+const template = document.getElementById("wx-card");
+const status = document.getElementById("wx-status");
+
+const setStatus = (message = "", variant = "info") => {
+  if (!status) return;
+  status.innerHTML = message;
+  status.classList.toggle("status-error", variant === "error");
+};
+
+form == null || form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const cityInput = document.getElementById("city");
+  const city = cityInput?.value.trim();
+  if (!city) return;
+  setStatus(`Ищу координаты для: <b>${city}</b>…`);
+  if (results) results.innerHTML = "";
+  try {
+    const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=ru&format=json`);
+    if (!geoResponse.ok) throw new Error("Ошибка геокодинга");
+    const geoData = await geoResponse.json();
+    if (!geoData.results || geoData.results.length === 0) {
+      setStatus("Город не найден.", "error");
+      return;
+    }
+    const location = geoData.results[0];
+    const forecastResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current_weather=true&hourly=temperature_2m&forecast_days=1&timezone=auto`);
+    if (!forecastResponse.ok) throw new Error("Ошибка прогноза");
+    const forecast = await forecastResponse.json();
+    if (results) results.innerHTML = "";
+    const fragment = template?.content.cloneNode(true);
+    if (fragment && results) {
+      const node = fragment.querySelector(".title");
+      if (node) node.textContent = `${location.name}, ${location.country}`;
+      const current = forecast.current_weather ?? {};
+      const temperature = current.temperature ?? "—";
+      const wind = current.windspeed ?? "—";
+      const time = current.time ?? "";
+      const meta = fragment.querySelector(".meta");
+      if (meta) meta.innerHTML = `Сейчас: <b>${temperature} °C</b>, ветер ${wind} км/ч<br/>Обновлено: ${time}`;
+      results.appendChild(fragment);
+    }
+    setStatus(`Погода обновлена для ${location.name}.`);
+  } catch (error) {
+    if (results) results.innerHTML = "";
+    const message = error instanceof Error ? error.message : String(error);
+    setStatus(`Ошибка: ${message}`, "error");
+  }
+});

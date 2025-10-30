@@ -9,7 +9,7 @@
     <link rel="stylesheet" crossorigin href="/weblab2/assets/style-B7thMiLa.css">
   </head>
   <body>
-    <header class="container">
+    <header class="container site-header">
       <h1>🌤️ Погода</h1>
       <nav class="nav">
         <a href="./index.html">Главная</a>
@@ -19,16 +19,37 @@
       </nav>
     </header>
 
-    <main class="container">
-      <form id="wx-form" class="card">
-        <label>Город:
-          <input id="city" type="text" required placeholder="Berlin, Moscow, Nizhny Novgorod"/>
-        </label>
-        <button type="submit">Показать</button>
-        <p class="hint">Геокодинг + прогноз: Open-Meteo</p>
-      </form>
+    <main class="container page">
+      <section class="card hero">
+        <div class="hero-body">
+          <p class="eyebrow">Прогноз погоды</p>
+          <h2>Проверьте условия в любимом городе</h2>
+          <p class="muted">
+            Сервис использует Open-Meteo для геокодинга и прогноза. Введите название города и получите аккуратную карточку
+            со сводкой прямо на этой странице.
+          </p>
+        </div>
+      </section>
 
-      <section id="wx-result" class="grid"></section>
+      <section class="page-columns">
+        <form id="wx-form" class="card stack form-card">
+          <h3>Город для поиска</h3>
+          <label>Название
+            <input id="city" type="text" required placeholder="Berlin, Moscow, Nizhny Novgorod"/>
+          </label>
+          <button type="submit">Показать</button>
+          <p class="hint">Геокодинг и прогноз предоставлены Open-Meteo</p>
+        </form>
+
+        <section class="card stack results-card">
+          <div class="panel-header">
+            <h3>Сводка</h3>
+            <p class="muted">Результат поиска появится здесь.</p>
+          </div>
+          <div id="wx-status" class="status muted"></div>
+          <div id="wx-result" class="grid"></div>
+        </section>
+      </section>
 
       <template id="wx-card">
         <article class="card">
@@ -37,6 +58,6 @@
         </article>
       </template>
     </main>
-
   </body>
+</html>
 </html>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" crossorigin href="/weblab2/assets/style-B7thMiLa.css">
   </head>
   <body>
-    <header class="container">
+    <header class="container site-header">
       <h1>💱 Конвертер валют</h1>
       <nav class="nav">
         <a href="./index.html">Главная</a>
@@ -19,17 +19,44 @@
       </nav>
     </header>
 
-    <main class="container">
-      <form id="fx-form" class="card">
-        <label>Сумма: <input id="amount" type="number" min="0" step="0.01" value="100"/></label>
-        <label>Из: <select id="from"></select></label>
-        <label>В: <select id="to"></select></label>
-        <button type="submit">Конвертировать</button>
-        <p class="hint">Источник: Frankfurter API</p>
-      </form>
+    <main class="container page">
+      <section class="card hero">
+        <div class="hero-body">
+          <p class="eyebrow">Курсы валют</p>
+          <h2>Конвертируйте в пару кликов</h2>
+          <p class="muted">
+            Выберите валюты, введите сумму и получите актуальный курс от Frankfurter API. Карточка результата
+            аккуратно покажет пересчёт и дату обновления.
+          </p>
+        </div>
+      </section>
 
-      <section id="fx-result" class="card"></section>
+      <section class="page-columns">
+        <form id="fx-form" class="card stack form-card">
+          <h3>Параметры конвертации</h3>
+          <label>Сумма
+            <input id="amount" type="number" min="0" step="0.01" value="100"/>
+          </label>
+          <label>Из валюты
+            <select id="from"></select>
+          </label>
+          <label>В валюту
+            <select id="to"></select>
+          </label>
+          <button type="submit">Конвертировать</button>
+          <p class="hint">Источник данных: Frankfurter API</p>
+        </form>
+
+        <section class="card stack results-card">
+          <div class="panel-header">
+            <h3>Результат</h3>
+            <p class="muted">Появится после обработки формы.</p>
+          </div>
+          <div id="fx-status" class="status muted"></div>
+          <div id="fx-result" class="result-value"></div>
+        </section>
+      </section>
     </main>
-
   </body>
+</html>
 </html>

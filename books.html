@@ -9,7 +9,7 @@
     <link rel="stylesheet" crossorigin href="/weblab2/assets/style-B7thMiLa.css">
   </head>
   <body>
-    <header class="container">
+    <header class="container site-header">
       <h1>📖 Поиск книг</h1>
       <nav class="nav">
         <a href="./index.html">Главная</a>
@@ -19,17 +19,38 @@
       </nav>
     </header>
 
-    <main class="container">
-      <form id="book-form" class="card">
-        <label>
-          Название/автор/слово:
-          <input id="book-query" type="text" required placeholder="harry potter / tolstoy / machine learning"/>
-        </label>
-        <button type="submit">Искать</button>
-        <p class="hint">Источник: Open Library Search API</p>
-      </form>
+    <main class="container page">
+      <section class="card hero">
+        <div class="hero-body">
+          <p class="eyebrow">Каталог книг</p>
+          <h2>Находите вдохновляющие истории</h2>
+          <p class="muted">
+            Введите часть названия или имя автора, чтобы открыть коллекцию книг из Open Library.
+            Карточки красиво выстроятся в сетку и помогут быстро перейти к подробностям.
+          </p>
+        </div>
+      </section>
 
-      <section id="book-results" class="grid"></section>
+      <section class="page-columns">
+        <form id="book-form" class="card stack form-card">
+          <h3>Параметры поиска</h3>
+          <label>
+            Название / автор / ключевое слово
+            <input id="book-query" type="text" required placeholder="harry potter / tolstoy / machine learning"/>
+          </label>
+          <button type="submit">Искать</button>
+          <p class="hint">Источник данных: Open Library Search API</p>
+        </form>
+
+        <section class="card stack results-card">
+          <div class="panel-header">
+            <h3>Результаты</h3>
+            <p class="muted">Появятся ниже после выполнения запроса.</p>
+          </div>
+          <div id="book-status" class="status muted"></div>
+          <div id="book-results" class="grid"></div>
+        </section>
+      </section>
 
       <template id="book-item">
         <article class="card">
@@ -40,6 +61,6 @@
         </article>
       </template>
     </main>
-
   </body>
+</html>
 </html>
