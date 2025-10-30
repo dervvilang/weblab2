@@ -7,105 +7,41 @@
   <link rel="stylesheet" href="modern.css" />
 </head>
 <body>
-
 <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="logo"></span>
-        <span>WebLab</span>
-      </a>
-
-      <button id="burger" class="burger" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-
-      <div id="menu" class="menu">
-        <a href="index.html">Главная</a>
-        <a href="books.html">Книги</a>
-        <a class="active" href="currency.html">Курсы валют</a>
-        <a href="weather.html">Погода</a>
-        <button id="theme-toggle" class="theme-toggle" title="Theme" data-mode="system">
-          <span>Тема</span>
-        </button>
-      </div>
-    </nav>
-  </div>
+  <nav class="nav container">
+    <a class="brand" href="index.html"><span class="logo"></span><span>WebLab</span></a>
+    <div class="menu">
+      <a href="books.html">Книги</a>
+      <a class="active" href="currency.html">Курсы валют</a>
+      <a href="weather.html">Погода</a>
+      <button id="theme-toggle" class="theme-toggle" title="Сменить тему">Тема</button>
+    </div>
+  </nav>
 </header>
 
 <main class="container">
   <section class="hero stack-m">
     <h1>Курсы валют</h1>
-    <p class="lead">Базовая таблица курсов. Подключи свой источник данных/скрипт, если требуется автообновление.</p>
-    <form class="grid" onsubmit="return false;">
-      <div class="col-6">
-        <label class="stack-s">
-          <span>Базовая валюта</span>
-          <select id="baseCurrency">
-            <option value="USD">USD — Доллар США</option>
-            <option value="EUR">EUR — Евро</option>
-            <option value="RUB">RUB — Рубль</option>
-          </select>
-        </label>
-      </div>
-      <div class="col-6">
-        <label class="stack-s">
-          <span>Дата (опционально)</span>
-          <input type="date" id="rateDate" />
-        </label>
-      </div>
-      <div class="col-12">
-        <button class="btn" id="loadRates">Показать курсы</button>
-      </div>
-    </form>
+    <p class="lead">Данные подгружаются из публичного API. Интерфейс не менялся — только оформление.</p>
   </section>
 
   <section class="card stack-m">
     <h3>Таблица курсов</h3>
-    <div class="stack-s">
-      <table class="table" aria-label="Таблица курсов валют">
-        <thead>
-          <tr>
-            <th>Валюта</th>
-            <th>Курс</th>
-            <th>Изм.</th>
-          </tr>
-        </thead>
-        <tbody id="ratesBody">
-          <!-- Заглушки: замени/обновляй данными из API -->
-          <tr>
-            <td>EUR</td>
-            <td>0.92</td>
-            <td><span class="badge">+0.12%</span></td>
-          </tr>
-          <tr>
-            <td>RUB</td>
-            <td>98.50</td>
-            <td><span class="badge">-0.08%</span></td>
-          </tr>
-          <tr>
-            <td>GBP</td>
-            <td>0.78</td>
-            <td><span class="badge">+0.03%</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <small class="muted">*Данные демонстрационные.</small>
-    </div>
+    <table class="table" aria-label="Курсы валют">
+      <thead><tr><th>Валюта</th><th>Курс</th></tr></thead>
+      <tbody id="ratesBody"><tr><td colspan="2">Загрузка…</td></tr></tbody>
+    </table>
   </section>
 </main>
 
 <footer class="footer">
   <div class="container inner">
     <small>© 2025 WebLab</small>
-    <div class="stack-s">
-      <small>Сделано для учебной лабораторной</small>
-    </div>
+    <small class="muted">Источник данных — публичное API</small>
   </div>
 </footer>
 
-<script src="theme.js"></script>
+<script type="module" src="theme.js"></script>
+<script type="module" src="currency.js"></script>
 </body>
 </html>
