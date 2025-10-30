@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Поиск книг — WebLab2</title>
+    <script type="module" crossorigin src="/weblab2/assets/books-BXe0iZfd.js"></script>
+    <link rel="modulepreload" crossorigin href="/weblab2/assets/style-BZ5FMwGp.js">
+    <link rel="stylesheet" crossorigin href="/weblab2/assets/style-B7thMiLa.css">
+  </head>
+  <body>
+    <header class="container">
+      <h1>📖 Поиск книг</h1>
+      <nav class="nav">
+        <a href="./index.html">Главная</a>
+        <a href="./books.html" aria-current="page">Поиск книг</a>
+        <a href="./currency.html">Конвертер валют</a>
+        <a href="./weather.html">Погода</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <form id="book-form" class="card">
+        <label>
+          Название/автор/слово:
+          <input id="book-query" type="text" required placeholder="harry potter / tolstoy / machine learning"/>
+        </label>
+        <button type="submit">Искать</button>
+        <p class="hint">Источник: Open Library Search API</p>
+      </form>
+
+      <section id="book-results" class="grid"></section>
+
+      <template id="book-item">
+        <article class="card">
+          <img class="cover" alt="Обложка"/>
+          <h3 class="title"></h3>
+          <p class="meta"></p>
+          <a class="link" target="_blank" rel="noopener">Подробнее</a>
+        </article>
+      </template>
+    </main>
+
+  </body>
+</html>

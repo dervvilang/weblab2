@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Конвертер валют — WebLab2</title>
+    <script type="module" crossorigin src="/weblab2/assets/currency-BInDHItT.js"></script>
+    <link rel="modulepreload" crossorigin href="/weblab2/assets/style-BZ5FMwGp.js">
+    <link rel="stylesheet" crossorigin href="/weblab2/assets/style-B7thMiLa.css">
+  </head>
+  <body>
+    <header class="container">
+      <h1>💱 Конвертер валют</h1>
+      <nav class="nav">
+        <a href="./index.html">Главная</a>
+        <a href="./books.html">Поиск книг</a>
+        <a href="./currency.html" aria-current="page">Конвертер валют</a>
+        <a href="./weather.html">Погода</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <form id="fx-form" class="card">
+        <label>Сумма: <input id="amount" type="number" min="0" step="0.01" value="100"/></label>
+        <label>Из: <select id="from"></select></label>
+        <label>В: <select id="to"></select></label>
+        <button type="submit">Конвертировать</button>
+        <p class="hint">Источник: Frankfurter API</p>
+      </form>
+
+      <section id="fx-result" class="card"></section>
+    </main>
+
+  </body>
+</html>
